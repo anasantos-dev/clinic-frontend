@@ -1,4 +1,4 @@
-export interface User {
+export interface UserEntity {
     id?: string;
     email: string;
     name?: string;
@@ -11,7 +11,7 @@ export interface UserCredentials {
 }
 
 export interface AuthResponse {
-    user: User;
+    user: UserEntity;
     token: string;
     refreshToken: string;
 }
