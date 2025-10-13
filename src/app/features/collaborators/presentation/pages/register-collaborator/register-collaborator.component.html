@@ -5,28 +5,28 @@
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <!--  Dados Pessoais -->
       <h3>Dados Pessoais</h3>
-      <input type="text" name="nomeCompleto" placeholder="Nome completo" [(ngModel)]="collaborator.nomeCompleto" required />
+      <input type="text" name="nomeCompleto" placeholder="Nome completo" [(ngModel)]="collaborator.fullName" required />
       <input type="text" name="cpf" placeholder="CPF" [(ngModel)]="collaborator.cpf" required />
-      <input type="tel" name="telefone" placeholder="Telefone" [(ngModel)]="collaborator.telefone" required />
-      <input type="date" name="dataNascimento" placeholder="Data de nascimento" [(ngModel)]="collaborator.dataNascimento" required />
+      <input type="tel" name="telefone" placeholder="Telefone" [(ngModel)]="collaborator.phone" required />
+      <input type="date" name="dataNascimento" placeholder="Data de nascimento" [(ngModel)]="collaborator.birthDate" required />
 
       <!--  Dados Profissionais -->
       <h3>Dados Profissionais</h3>
-      <input type="text" name="matricula" placeholder="Matrícula" [(ngModel)]="collaborator.matricula" required />
-      <input type="text" name="cargo" placeholder="Cargo" [(ngModel)]="collaborator.cargo" required />
-      <input type="text" name="especialidade" placeholder="Especialidade" [(ngModel)]="collaborator.especialidade" />
-      <input type="date" name="dataAdmissao" placeholder="Data de admissão" [(ngModel)]="collaborator.dataAdmissao" required />
+      <input type="text" name="matricula" placeholder="Matrícula" [(ngModel)]="collaborator.registration" required />
+      <input type="text" name="cargo" placeholder="Cargo" [(ngModel)]="collaborator.position" required />
+      <input type="text" name="especialidade" placeholder="Especialidade" [(ngModel)]="collaborator.specialty" />
+      <input type="date" name="dataAdmissao" placeholder="Data de admissão" [(ngModel)]="collaborator.admissionDate" required />
 
       <!--  Dados de Acesso -->
       <h3>Dados de Acesso</h3>
-      <input type="email" name="emailCorporativo" placeholder="E-mail corporativo" [(ngModel)]="collaborator.emailCorporativo" required />
-      <input type="password" name="senha" placeholder="Senha" [(ngModel)]="collaborator.senha" required />
-      <input type="password" name="confirmacaoSenha" placeholder="Confirmar senha" [(ngModel)]="collaborator.confirmacaoSenha" required />
-      <input type="text" name="nivelAcesso" placeholder="Nível de acesso" [(ngModel)]="collaborator.nivelAcesso" />
+      <input type="email" name="emailCorporativo" placeholder="E-mail corporativo" [(ngModel)]="collaborator.corporateEmail" required />
+      <input type="password" name="senha" placeholder="Senha" [(ngModel)]="collaborator.password" required />
+      <input type="password" name="confirmacaoSenha" placeholder="Confirmar senha" [(ngModel)]="collaborator.confirmPassword" required />
+      <input type="text" name="nivelAcesso" placeholder="Nível de acesso" [(ngModel)]="collaborator.accessLevel" />
 
       <!--  Dados Adicionais -->
       <div class="checkbox">
-        <input type="checkbox" name="ativo" [(ngModel)]="collaborator.ativo" />
+        <input type="checkbox" name="ativo" [(ngModel)]="collaborator.active" />
         <label for="ativo">Colaborador ativo</label>
       </div>
 

@@ -1,32 +1,34 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+
 import { CollaboratorRepository } from '../../../../../domain/collaborators/repositories/collaborator.repository';
 import { CollaboratorEntity } from '../../../../../domain/collaborators/entities/collaborator.entity';
+import { CollaboratorMapper } from '../../data/mappers/collaborator.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class RegisterCollaboratorUseCase {
   private readonly collaboratorRepository = inject(CollaboratorRepository);
 
   /**
-   * Executa o cadastro de um novo colaborador.
-   * @param data Dados do colaborador a serem cadastrados.
-   * @returns Observable com o colaborador criado.
+   * Executes the registration of a new collaborator.
+   * @param data Collaborator information to be registered.
+   * @returns Observable with the created collaborator entity.
    */
   execute(data: CollaboratorEntity): Observable<CollaboratorEntity> {
-    if (!data.emailCorporativo || !data.senha) {
-      return throwError(() => new Error('Email e senha são obrigatórios.'));
+    if (!data.corporateEmail || !data.password) {
+      return throwError(() => new Error('Corporate email and password are required.'));
     }
 
     return this.collaboratorRepository.register(data).pipe(
-      map((result: CollaboratorEntity) => {
-        console.log('[RegisterCollaboratorUseCase] Cadastro realizado com sucesso:', result);
-        return result;
+      map((response) => {
+        console.log('[RegisterCollaboratorUseCase] Registration successful:', response);
+        return CollaboratorMapper.toEntity(response);
       }),
       catchError((error) => {
-        console.error('[RegisterCollaboratorUseCase] Erro ao cadastrar colaborador:', error);
-        return throwError(() => new Error('Falha ao cadastrar colaborador.'));
-      })
+        console.error('[RegisterCollaboratorUseCase] Error while registering collaborator:', error);
+        return throwError(() => new Error('Failed to register collaborator.'));
+      }),
     );
   }
 }

@@ -13,19 +13,19 @@ import { CollaboratorEntity } from '../../../../../../domain/collaborators/entit
 })
 export class RegisterCollaboratorComponent {
   collaborator: CollaboratorEntity = {
-    nomeCompleto: '',
+    fullName: '',
     cpf: '',
-    telefone: '',
-    dataNascimento: '',
-    matricula: '',
-    cargo: '',
-    especialidade: '',
-    dataAdmissao: '',
-    emailCorporativo: '',
-    senha: '',
-    confirmacaoSenha: '',
-    nivelAcesso: '',
-    ativo: true,
+    phone: '',
+    birthDate: '',
+    registration: '',
+    position: '',
+    specialty: '',
+    admissionDate: '',
+    corporateEmail: '',
+    password: '',
+    confirmPassword: '',
+    accessLevel: '',
+    active: true,
   };
 
   constructor(private readonly registerUseCase: RegisterCollaboratorUseCase) {}
@@ -35,7 +35,7 @@ export class RegisterCollaboratorComponent {
 
     this.registerUseCase.execute(this.collaborator).subscribe({
       next: (result) => {
-        alert(` Colaborador ${result.nomeCompleto} cadastrado com sucesso!`);
+        alert(` Colaborador ${result.fullName} cadastrado com sucesso!`);
         form.resetForm();
       },
       error: (error) => {

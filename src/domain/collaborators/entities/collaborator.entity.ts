@@ -1,28 +1,32 @@
 /**
- * Entidade de domínio que representa um Colaborador.
+ * Domain entity representing a Collaborator.
  *
- * Essa camada é totalmente isolada da infraestrutura ou framework.
- * Ela define apenas os dados e comportamentos centrais do domínio.
+ * This layer is completely isolated from infrastructure or frameworks.
+ * It defines only the core business data and behaviors.
  */
-export interface CollaboratorEntity {
-  // 🧍‍♂️ Dados pessoais
-  nomeCompleto: string;
-  cpf: string;
-  telefone: string;
-  dataNascimento: string;
+export class CollaboratorEntity {
+  //  Personal data
+  fullName!: string;
+  cpf!: string;
+  phone!: string;
+  birthDate!: string;
 
-  // 💼 Dados profissionais
-  matricula: string;
-  cargo: string;
-  especialidade: string;
-  dataAdmissao: string;
+  // 💼 Professional data
+  registration!: string;
+  position!: string;
+  specialty!: string;
+  admissionDate!: string;
 
-  // 🔐 Dados de acesso
-  emailCorporativo: string;
-  senha: string;
-  confirmacaoSenha: string;
-  nivelAcesso: string;
+  //  Access data
+  corporateEmail!: string;
+  password!: string;
+  confirmPassword!: string;
+  accessLevel!: string;
 
-  // ⚙️ Dados adicionais
-  ativo: boolean;
+  //  Additional data
+  active!: boolean;
+
+  constructor(props: Partial<CollaboratorEntity>) {
+    Object.assign(this, props);
+  }
 }
